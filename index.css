@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@400;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --index: calc(1vh + 1vw);
+    --text-color: #e7e7e0;
+    --transition: transform 0.75s cubic-bezier(0.075, 0.5, 0, 1);
+}
+
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: #010101;
+    line-height: 1.5;
+}
+
+.content {
+    will-change: transform;
+}
+
+.header {
+    position: relative;
+}
+
+.header::after {
+    content: '';
+    position: absolute;
+    bottom: calc(var(--index) * -4.5);
+    z-index: 100;
+    width: 100%;
+    height: calc(var(--index) * 10);
+    background: url('img/ground.png') center / cover no-repeat;
+}
+
+.layers {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+}
+
+.layer {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    will-change: transform;
+    z-index: 2;
+    transition: var(--transition);
+}
+
+.layers__base {
+    background-image: url("img/layer-base.png");
+    transform: translate3d(0, calc(var(--scrollTop) / 1.6), 0);
+    z-index: 0;
+}
+
+.layers__middle {
+    background-image: url("img/layer-middle.png");
+    transform: translate3d(0, calc(var(--scrollTop) / 2.5), 0);
+}
+
+.layers__front {
+    background-image: url("img/layer-front.png");
+    transform: translate3d(0, calc(var(--scrollTop) / 5.7), 0);
+}
+
+.layers__header {
+    transform: translate3d(0, calc(var(--scrollTop) / 2), 0);
+    will-change: transform;
+    z-index: 1;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: var(--text-color);
+    text-shadow: 0 0 15px #9e7d35;
+    transition: var(--transition);
+}
+
+.layers__title {
+    font-size: calc(var(--index) * 2.5);
+    letter-spacing: calc(var(--index) / 2.2);
+}
+
+.layers__caption {
+    font-size: calc(var(--index) / 1.2);
+    letter-spacing: calc(var(--index) / 3.5);
+}
+
+.main {
+    min-height: 100vh;
+    background: url("img/dungeon.jpg") center / cover no-repeat;
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.main__content {
+    padding: 0 15px;
+    text-align: center;
+    transform: translate3d(0, calc(var(--scrollTop) / 20), 0);
+    will-change: transform;
+    transition: var(--transition);
+}
+
+.main__title {
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    font-size: calc(var(--index) * 1.5);
+    letter-spacing: calc(var(--index) / 7);
+}
+
+.main__description {
+    font-size: calc(var(--index) * 0.9);
+    max-width: 700px;
+}
